@@ -1,0 +1,92 @@
+.howItWorks {
+    background-color: var(--white);
+    width: 100vw;
+    min-height: calc(100vh - 70px); /* Adjust if header is a different height */
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  
+  .howItWorks h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: var(--primary-color);
+  }
+  
+  .stepsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+  
+  .step {
+    padding: 2rem;
+    border-radius: var(--radius);
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    opacity: 0;
+    animation: fadeSlideUp 0.6s ease forwards;
+  }
+  
+  .step:nth-child(1) { animation-delay: 0.3s; }
+  .step:nth-child(2) { animation-delay: 0.6s; }
+  .step:nth-child(3) { animation-delay: 0.9s; }
+  .step:nth-child(4) { animation-delay: 1.2s; }
+  
+  .step:hover {
+    transform: translateY(-5px);
+  }
+  
+  .stepNumber {
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgba(0, 113, 227, 0.1);
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+  }
+  
+  .step h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .step p {
+    color: var(--medium-gray);
+  }
+  
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (max-width: 600px) {
+    .howItWorks {
+      padding: 2rem 1rem;
+    }
+  
+    .howItWorks h2 {
+      font-size: 2rem;
+    }
+  
+    .step {
+      padding: 1.5rem;
+    }
+  }
+  
+  

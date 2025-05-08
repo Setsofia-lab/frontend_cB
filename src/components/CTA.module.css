@@ -1,0 +1,36 @@
+/* CallToAction.module.css */
+.CTA {
+    background: linear-gradient(135deg, var(--primary-color), #6c5ce7);
+    padding: 4rem 2rem;
+  }
+  
+  .ctaBox {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--white);
+  }
+  
+  .ctaBox h2 {
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  
+  .ctaBox p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+  }
+  
+  .ctaButton {
+    background-color: var(--white);
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+  }
+  
+  .ctaButton:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }

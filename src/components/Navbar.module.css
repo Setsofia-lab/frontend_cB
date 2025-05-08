@@ -1,0 +1,94 @@
+/* Navbar.module.css */
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--dark-gray);
+  margin: 0;
+}
+
+.navItems {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navItems li a {
+  color: var(--dark-gray);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.navItems li a:hover {
+  color: var(--primary-color);
+}
+
+.ctaButton {
+  background-color: var(--primary-color);
+  color: var(--white) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  transition: var(--transition);
+}
+
+.ctaButton:hover {
+  background-color: #0062c3;
+}
+
+.menuIcon {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.menuIcon div {
+  width: 100%;
+  height: 2px;
+  background-color: var(--dark-gray);
+  transition: var(--transition);
+}
+
+@media (max-width: 768px) {
+  .menuIcon {
+    display: flex;
+  }
+
+  .navItems {
+    position: absolute;
+    flex-direction: column;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    padding: 1.5rem;
+    gap: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+  }
+
+  .menuOpen {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+}

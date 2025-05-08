@@ -1,24 +1,24 @@
-import React from 'react';
-import Header from './Header.jsx'; // <-- Updated
-import Hero from './Hero.jsx'; // <-- Updated
-import ProblemSolution from './ProblemSolution.jsx'; // <-- Updated
-import Features from './Features.jsx'; // <-- Updated
-import VideoDemo from './VideoDemo.jsx'; // <-- Updated
-import CTA from './CTA.jsx'; // <-- Updated
-import Footer from './Footer.jsx'; // <-- Updated
-import './style.css'; // This stays .css
+// App.jsx - Main component that combines all other components
+import { useState } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Features from './components/Features';
+import HowItWorks from './components/HowItWorks';
+import Testimonials from './components/Testimonials';
+import Demo from './components/Demo';
+import CTA from './components/CTA';
+import Footer from './components/Footer';
+import './App.css';
 
 function App() {
-  // Replace 'YOUR_YOUTUBE_VIDEO_ID' with the actual ID of your demo video
-  const demoVideoId = 'v9kr2Hor8ms'; // Example: 'dQw4w9WgXcQ'
-
   return (
-    <div className="App">
-      <Header />
+    <div className="app">
+      <Navbar />
       <Hero />
-      <ProblemSolution/>
       <Features />
-      <VideoDemo videoId={demoVideoId} /> {/* Use the VideoDemo component */}
+      <HowItWorks />
+      <Demo />
+      <Testimonials />
       <CTA />
       <Footer />
     </div>

@@ -1,0 +1,73 @@
+/* Testimonials.module.css */
+.testimonials {
+    background-color: var(--white);
+    text-align: center;
+  }
+  
+  .testimonialContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .testimonialCard {
+    background-color: var(--white);
+    padding: 3rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: 0 1rem;
+    flex: 1;
+  }
+  
+  .quote {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    color: var(--dark-gray);
+  }
+  
+  .author {
+    font-weight: 600;
+    color: var(--dark-gray);
+  }
+  
+  .title {
+    color: var(--medium-gray);
+    font-size: 0.9rem;
+  }
+  
+  .navButton {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--medium-gray);
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 0.5rem;
+  }
+  
+  .navButton:hover {
+    color: var(--primary-color);
+  }
+  
+  .indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+  
+  .indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--light-gray);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .indicator.active {
+    background-color: var(--primary-color);
+  }
