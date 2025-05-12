@@ -3,7 +3,7 @@
 // API keys are now managed by the Python backend.
 // This file will be responsible for calling our Python backend.
 
-const BACKEND_API_URL = 'http://backend-codebuddy-env.eba-xe3ak2na.us-east-1.elasticbeanstalk.com/api'; // Updated to live Elastic Beanstalk URL
+const BACKEND_API_URL = '/.netlify/functions/evaluate'; // Updated to live Elastic Beanstalk URL
 
 /**
  * Reads file content as a base64 string to send in JSON.
@@ -90,7 +90,14 @@ export const getLlmEvaluation = async (studentCodeFiles, selectedAssignment, foc
 
     const data = await response.json();
     console.log("Data from backend:", data);
-    return data.evaluation;
+
+    // FIXED: Extract text from the actual response structure
+    if (data.response && data.response.text) {
+      return data.response.text;
+    } else {
+      console.error("Unexpected response format:", data);
+      return "Error: Unexpected response format from the backend.";
+    }
 
   } catch (error) {
     // This catch block handles network errors or errors thrown from the !response.ok block

@@ -67,3 +67,6 @@ backend_deployment_v2.zip
 
 # Mac files
 .DS_Store
+
+# Local Netlify folder
+.netlify
