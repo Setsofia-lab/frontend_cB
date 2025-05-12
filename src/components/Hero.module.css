@@ -3,8 +3,9 @@
   display: flex;
   align-items: center;
   min-height: calc(100vh - 70px);
-  padding: 10rem 6rem;
+  padding: 8rem 4rem;
   background-color: var(--white);
+  width: 100%;
 }
 
 .heroContent {
@@ -100,13 +101,84 @@
     flex-direction: column;
     text-align: center;
     gap: 3rem;
+    padding: 6rem 3rem;
   }
 
   .heroContent {
     padding-right: 0;
   }
 
+  .heroContent h1 {
+    font-size: 3rem;
+  }
+
+  .heroContent p {
+    font-size: 1.3rem;
+    margin: 0 auto 2rem;
+  }
+
   .buttonGroup {
     justify-content: center;
+  }
+  
+  .heroImage {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 5rem 2rem;
+  }
+  
+  .heroContent h1 {
+    font-size: 2.5rem;
+  }
+  
+  .heroContent p {
+    font-size: 1.2rem;
+  }
+  
+  .heroImage {
+    height: 300px;
+  }
+  
+  .buttonGroup {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 4rem 1.5rem 3rem;
+    min-height: auto;
+  }
+  
+  .heroContent h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .heroContent p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .heroImage {
+    height: 250px;
+    padding: 0.5rem;
+  }
+  
+  .buttonGroup {
+    gap: 0.8rem;
+  }
+  
+  .primaryButton, .secondaryButton {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    width: 100%;
+    max-width: 200px;
   }
 }

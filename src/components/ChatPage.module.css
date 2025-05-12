@@ -1,0 +1,335 @@
+/* components/ChatPage.module.css */
+.chatPageLayout { /* New outermost container for sidebar + main content */
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Prevent scrollbars on the layout itself */
+  background-color: #f0f2f5; 
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.mainContent {
+  flex-grow: 1; 
+  height: 100vh;
+  overflow-y: auto; 
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+  margin-left: 260px; 
+  width: calc(100% - 260px); 
+  display: flex; 
+  justify-content: center; 
+  align-items: flex-start; 
+  padding: 20px; /* Add some padding around the chat container */
+  box-sizing: border-box;
+}
+
+.mainContent.sidebarClosed {
+  margin-left: 0;
+  width: 100%;
+}
+
+.sidebarToggle {
+  background: none;
+  border: none;
+  font-size: 1.5em; 
+  cursor: pointer;
+  color: white; /* Make it visible on blue header */
+  padding: 0px 10px; /* Adjust padding */
+  /* position: absolute; Re-evaluate positioning */
+  /* left: 0; */
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+  margin-right: 15px; /* Space between toggle and title */
+}
+.sidebarToggle:hover {
+  color: #e0e0e0; /* Lighter color on hover */
+}
+
+
+.chatContainer { 
+  width: 100%;
+  max-width: 1200px; 
+  height: calc(100vh - 40px); /* Account for padding in .mainContent */
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
+  border-radius: 8px; /* Add back a slight radius */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent content from spilling */
+  font-family: inherit; /* Ensure font is inherited */
+}
+
+.chatHeader {
+  background-color: #007bff; 
+  color: white;
+  padding: 12px 20px; /* Slightly reduced padding */
+  text-align: center; /* Keep title centered */
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit; 
+  display: flex; /* For aligning toggle and title */
+  align-items: center;
+  /* justify-content: center; /* Remove if toggle is left-aligned */
+  position: relative; /* For absolute positioning of toggle if needed */
+  border-top-left-radius: 8px; /* Match container radius */
+  border-top-right-radius: 8px; /* Match container radius */
+}
+
+.chatHeader h2 {
+  margin: 0;
+  font-size: 1.2em;
+  font-family: inherit; 
+  flex-grow: 1; /* Allow title to take space if toggle is present */
+  text-align: center; /* Ensure title is centered if toggle is on left */
+}
+
+.messageList {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto; /* Allow scrolling for messages */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  padding: 10px 15px;
+  border-radius: 18px;
+  max-width: 70%;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+.message.user {
+  background-color: #007bff; /* New Blue */
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.message.bot {
+  background-color: #f1f0f0; /* Bot messages in a light grey */
+  color: #333;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  font-family: inherit; /* Ensure font is inherited */
+}
+
+.systemMessage {
+  font-style: italic;
+  color: #666;
+  font-size: 0.9em;
+  text-align: center;
+  width: 100%;
+  background-color: transparent !important; /* Override other message styles */
+}
+
+.message.loading { /* Style for the "thinking" message */
+  font-style: italic;
+  color: #007bff; /* Blue to indicate activity */
+  background-color: #e7f0ff !important; /* Light blue background */
+}
+
+.controlsArea { /* Renamed from uploadSectionsContainer for clarity */
+  display: flex;
+  justify-content: space-between; 
+  padding: 20px; /* Increased padding for better spacing */
+  gap: 25px; 
+  border-bottom: 1px solid #dee2e6; /* Consistent border color */
+  background-color: #f8f9fa; /* Light background for controls area, similar to dashboard cards */
+}
+
+.fileUploadSection {
+  flex: 2; /* Give more space to file upload */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; Removed to allow h4 to be left-aligned if desired */
+}
+
+.fileUploadSection h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+  font-size: 1em; 
+  display: flex; 
+  align-items: center;
+  gap: 8px; 
+}
+
+.fileUploadArea {
+  padding: 20px; /* More padding */
+  margin: 0;
+  width: 100%;
+  min-height: 80px; /* Larger drop area */
+  border: 2px dashed #007bff; /* Blue dashed border */
+  border-radius: 6px; 
+  text-align: center;
+  cursor: pointer;
+  background-color: #ffffff; /* White background */
+  color: #007bff; 
+  font-size: 0.9em; /* Slightly larger text */
+  font-family: inherit; /* Ensure font is inherited */
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  display: flex; /* For centering content */
+  flex-direction: column; /* Stack p and button */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+}
+
+.fileUploadArea:hover {
+  background-color: #e9ecef; 
+  border-color: #007bff; /* Blue accent on hover */
+}
+
+.fileUploadArea p {
+  margin: 0;
+  font-family: inherit; 
+  color: #007bff; /* Blue text for placeholder */
+}
+.fileUploadArea p {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fileList {
+  margin-top: 10px; 
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Increased gap */
+  max-height: 100px; 
+  overflow-y: auto;
+}
+
+.filePreview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px; /* More padding */
+  background-color: #e7f0ff; /* Light blue for file preview, similar to dashboard cards */
+  border-radius: 4px;
+  width: 100%; 
+  box-sizing: border-box;
+  font-size: 0.9em; 
+  color: #0056b3; /* Darker blue text */
+}
+
+.filePreview span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 8px;
+  display: flex; /* To align icon with text */
+  align-items: center;
+  gap: 5px; /* Space between icon and filename */
+}
+
+.removeFileButton {
+  background: none;
+  border: none;
+  color: #8c0000; 
+  cursor: pointer;
+  font-size: 1em; /* Adjusted size */
+  font-weight: bold;
+  padding: 0 3px;
+}
+.removeFileButton:hover {
+  color: #ff0000; 
+  border-color: transparent !important; 
+  background-color: transparent !important; 
+}
+
+.assignmentSelectionSection {
+  flex: 1; /* Takes less space than file upload */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.assignmentSelectionSection h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+  font-size: 1em;
+  display: flex; 
+  align-items: center;
+  gap: 8px; 
+}
+
+.assignmentDropdown {
+  width: 100%;
+  padding: 12px 15px; /* Increased padding */
+  border: 1px solid #ced4da; /* Consistent border */
+  border-radius: 4px;
+  background-color: white;
+  font-family: inherit;
+  font-size: 1em; /* Standard size */
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.assignmentDropdown:hover {
+  border-color: #007bff;
+}
+
+.assignmentDropdown:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.chatInput {
+  display: flex;
+  padding: 15px 20px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #ffffff; /* White background for input area */
+  border-top: 1px solid #dee2e6; /* Lighter border */
+  font-family: inherit; 
+}
+
+.chatInput input {
+  flex-grow: 1;
+  padding: 10px 15px; 
+  border: 1px solid #ced4da; /* Softer border */
+  border-radius: 20px; 
+  margin-right: 10px;
+  font-size: 1em; /* Standard font size */
+  font-family: inherit; 
+  background-color: #f8f9fa; /* Light background for input field itself */
+  color: #212529; /* Dark text color for input */
+}
+
+.chatInput input:focus {
+  outline: none;
+  border-color: #007bff; 
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); 
+  background-color: #ffffff; /* White when focused */
+}
+
+.chatInput input:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.chatInput button {
+  padding: 12px 22px; /* Slightly larger padding */
+  background-color: #007bff; /* New Blue */
+  color: white;
+  border: none;
+  border-radius: 22px; /* More rounded */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit; /* Ensure font is inherited */
+  transition: background-color 0.3s ease;
+}
+
+.chatInput button:hover {
+  background-color: #0056b3; /* Darker Blue for hover */
+}
+
+.chatInput button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

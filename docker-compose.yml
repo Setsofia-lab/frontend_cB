@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: . # Root directory where Dockerfile.frontend is
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "80:80" # Map host port 80 to container port 80 (Nginx default)
+    restart: unless-stopped
+    depends_on:
+      - backend # Ensures backend starts before frontend (optional, but good practice)
+    networks:
+      - codebuddy_network
+
+  backend:
+    build:
+      context: ./backend # Context is the backend directory
+      dockerfile: Dockerfile # Dockerfile is named Dockerfile inside ./backend
+    ports:
+      - "5001:5001" # Map host port 5001 to container port 5001
+    environment:
+      # Pass API keys as environment variables to the backend container
+      # These should ideally be managed securely, e.g., via Docker secrets or a .env file
+      # that is NOT committed to version control but is present during docker-compose up.
+      # For local development, docker-compose can pick up a .env file in the same directory as docker-compose.yml
+      # or in the backend context directory if specified in the Dockerfile (e.g. with python-dotenv).
+      # The backend/app.py is already set up to use os.environ.get()
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+    volumes:
+      - ./backend:/app # Mount local backend code into container for development (optional)
+    restart: unless-stopped
+    networks:
+      - codebuddy_network
+
+networks:
+  codebuddy_network:
+    driver: bridge

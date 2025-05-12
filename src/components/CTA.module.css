@@ -1,6 +1,6 @@
 /* CallToAction.module.css */
 .CTA {
-    background: linear-gradient(135deg, var(--primary-color), #6c5ce7);
+    background-color: #007bff;
     padding: 4rem 2rem;
   }
   
@@ -14,6 +14,7 @@
   .ctaBox h2 {
     color: var(--white);
     margin-bottom: 1rem;
+    font-size: 2.5rem;
   }
   
   .ctaBox p {
@@ -22,15 +23,61 @@
   }
   
   .ctaButton {
-    background-color: var(--white);
-    color: var(--primary-color);
+    background-color: var(--dark-gray);
+    color: var(--white);
     font-weight: 600;
     padding: 1rem 2rem;
     font-size: 1.2rem;
+    display: inline-block;
+    min-width: 200px;
   }
   
   .ctaButton:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--secondary-color);
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .CTA {
+      padding: 3rem 1.5rem;
+    }
+    
+    .ctaBox h2 {
+      font-size: 2rem;
+    }
+    
+    .ctaBox p {
+      font-size: 1.1rem;
+    }
+    
+    .ctaButton {
+      padding: 0.8rem 1.5rem;
+      font-size: 1.1rem;
+      min-width: 180px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .CTA {
+      padding: 2rem 1rem;
+    }
+    
+    .ctaBox h2 {
+      font-size: 1.8rem;
+    }
+    
+    .ctaBox p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .ctaButton {
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+      min-width: 160px;
+      width: 80%;
+      max-width: 280px;
+    }
   }
