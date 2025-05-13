@@ -90,6 +90,9 @@ export const getLlmEvaluation = async (studentCodeFiles, selectedAssignment, foc
 
     const data = await response.json();
     console.log("Data from backend:", data);
+    console.log("Checking data.response:", data.response);
+    console.log("Checking data.response.text:", data.response ? data.response.text : 'data.response is null or undefined');
+
 
     // FIXED: Extract text from the actual response structure
     if (data.response && data.response.text) {
