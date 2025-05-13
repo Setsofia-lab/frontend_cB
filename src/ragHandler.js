@@ -62,7 +62,7 @@ export const getLlmEvaluation = async (studentCodeFiles, selectedAssignment, foc
       llmChoice: llmChoice,
     };
 
-    console.log("Sending to backend:", `${BACKEND_API_URL}/evaluate`, "with payload:", payload);
+    console.log("Sending to backend:", BACKEND_API_URL, "with payload:", payload);
 
     const response = await fetch(`${BACKEND_API_URL}/evaluate`, {
       method: 'POST',
